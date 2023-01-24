@@ -92,6 +92,7 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 		)
 	})
 
+	root.innerHTML = ''
 	render(
 		html`
 			<div class="asit-rime ${tw`flex flex-col gap-8`}">
@@ -215,7 +216,7 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 																					'Gesamt'
 																				)}
 																				<span
-																					class="asit-rime-foot__price ${tw`font-semibold`}"
+																					class="asit-rime-foot__price ${tw`font-semibold text-center`}"
 																				>
 																					${formatPrice(
 																						category
