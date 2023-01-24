@@ -215,15 +215,15 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 																					'Total',
 																					'Gesamt'
 																				)}
-																				<span
-																					class="asit-rime-foot__price ${tw`font-semibold text-center`}"
+																				<div
+																					class="asit-rime-foot__price ${tw`inline font-semibold`}"
 																				>
 																					${formatPrice(
 																						category
 																							.translations[0]
 																							.PrezzoTotale
 																					)}
-																				</span>
+																				</div>
 																				${category
 																					.translations[0]
 																					.PrezzoTotalePersone >
@@ -240,15 +240,15 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 																					  )}
 																		  `
 																		: html`
-																				<span
-																					class="asit-rime-foot__price ${tw`font-semibold`}"
+																				<div
+																					class="asit-rime-foot__price ${tw`font-semibold text-center`}"
 																				>
 																					${formatPrice(
 																						category
 																							.translations[0]
 																							.PrezzoTotale
 																					)}
-																				</span>
+																				</div>
 																		  `}
 																</div>
 														  `
