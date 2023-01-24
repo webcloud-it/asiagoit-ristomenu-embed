@@ -23,6 +23,11 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 	}
 
 	const root = document.querySelector('[data-asit-rime]')
+
+	if (!root) {
+		return
+	}
+
 	const menuType = root.dataset.asitRimeType || 1
 	const minisite = root.dataset.asitMinisite
 	const lang = root.dataset.asitLang?.split(/_|-/)[0] || 'it'
