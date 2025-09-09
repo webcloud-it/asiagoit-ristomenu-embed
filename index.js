@@ -64,7 +64,8 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 												TestoCondizioni
 												Ordine
 											}
-											dishes(filter: { disabled: { _eq: false } }) {
+											dishes{
+												disabled
 												translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
 													NomePiatto
 													DescrizionePiatto
@@ -84,6 +85,9 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
   }
 
   // sort categories and dishes
+  data.forEach(category => {
+    category.dishes = (category.dishes || []).filter(d => d?.disabled !== true)
+  })
   data = orderBy(data, category => category.translations && category.translations[0]?.Ordine)
   data.forEach(category => {
     category.dishes = orderBy(
