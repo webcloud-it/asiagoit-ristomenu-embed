@@ -64,7 +64,7 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
 												TestoCondizioni
 												Ordine
 											}
-											dishes dishes(filter: { disabled: { _eq: false } }) {
+											dishes(filter: { disabled: { _eq: false } }) {
 												translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
 													NomePiatto
 													DescrizionePiatto
