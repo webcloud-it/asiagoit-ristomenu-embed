@@ -49,32 +49,42 @@ import {repeat} from 'https://cdn.jsdelivr.net/npm/lit-html@2.6.1/directives/rep
             'Authorization': `Bearer ${access}`,
           },
           body: JSON.stringify({
-            query: /* graphql */ `{
-										menuristocategorienolingua(
-											limit: 30, filter: { menu_type: { _eq: ${menuType} }${
-              minisite ? `, customers_id: { Id: { _eq: ${minisite} } }` : ''
-            }}
-										) {
-											translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
-												NomeCategoria
-												SottotitoloCategoria
-												PrenotazioneObbligatoria
-												PrezzoTotale
-												PrezzoTotalePersone
-												TestoCondizioni
-												Ordine
-											}
-											dishes(filter: { disabled: { _eq: false } }) {
-												translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
-													NomePiatto
-													DescrizionePiatto
-													PrezzoPiatto
-													PrezzoMassimo
-													Ordine
-												}
-											}
-										}
-									}`,
+            query: /* GraphQL */ `{
+    menuristocategorienolingua(
+      limit: 30,
+      filter: {
+        menu_type: { _eq: ${menuType} }
+        ${minisite ? `, customers_id: { Id: { _eq: ${minisite} } }` : ''}
+      }
+    ) {
+      translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
+        NomeCategoria
+        SottotitoloCategoria
+        PrenotazioneObbligatoria
+        PrezzoTotale
+        PrezzoTotalePersone
+        TestoCondizioni
+        Ordine
+      }
+      dishes(
+        filter: {
+          _or: [
+            { disabled: { _eq: false } }
+            { disabled: { _null: true } }
+          ]
+        }
+      ) {
+        disabled
+        translations(filter: { Lingua: { id: { _eq: ${langId} } } }) {
+          NomePiatto
+          DescrizionePiatto
+          PrezzoPiatto
+          PrezzoMassimo
+          Ordine
+        }
+      }
+    }
+  }`,
           }),
         })
       ).json()
